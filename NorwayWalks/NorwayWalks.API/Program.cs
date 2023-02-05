@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NorwayWalks.API.Data;
+using NorwayWalks.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddDbContext<NorwayWalksDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NorwayWalks"));
 });
+
+builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 
