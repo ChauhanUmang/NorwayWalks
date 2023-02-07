@@ -80,8 +80,8 @@ namespace NorwayWalks.API.Controllers
             var response = await _regionRepository.AddAsync(region);
 
             //Convert back to DTO
-            _mapper.Map<Models.DTO.Region>(response);
-            return CreatedAtAction(nameof(GetRegionAsync), new {id = response.Id}, response);
+            var responseDTO =  _mapper.Map<Models.DTO.Region>(response);
+            return CreatedAtAction(nameof(GetRegionAsync), new {id = responseDTO.Id}, responseDTO);
         }
 
         [HttpDelete]
