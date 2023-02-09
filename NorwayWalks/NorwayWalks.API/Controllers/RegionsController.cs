@@ -65,6 +65,12 @@ namespace NorwayWalks.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRegionAsync(AddRegionRequest addRegionRequest)
         {
+            //validate the request
+            //if (!ValidateAddRegionAsync(addRegionRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
             //Request(DTO) to domain model
             var region = new Models.Domain.Region()
             {
@@ -132,5 +138,50 @@ namespace NorwayWalks.API.Controllers
             //Return ok response
             return Ok(updateRegionDTO);
         }
+
+        #region Private Methods
+
+        //private bool ValidateAddRegionAsync(AddRegionRequest addRegionRequest)
+        //{
+        //    if(addRegionRequest is null)
+        //    {
+        //        ModelState.AddModelError(nameof(addRegionRequest),
+        //            $"Add Region data is required.");
+        //        return false;
+        //    }
+
+        //    if (string.IsNullOrWhiteSpace(addRegionRequest.Code))
+        //    {
+        //        ModelState.AddModelError(nameof(addRegionRequest.Code), 
+        //            $"{nameof(addRegionRequest.Code)} cannot be null or empty or white space.");
+        //    }
+
+        //    if (string.IsNullOrWhiteSpace(addRegionRequest.Name))
+        //    {
+        //        ModelState.AddModelError(nameof(addRegionRequest.Name),
+        //            $"{nameof(addRegionRequest.Name)} cannot be null or empty or white space.");
+        //    }
+
+        //    if(addRegionRequest.Area <= 0)
+        //    {
+        //        ModelState.AddModelError(nameof(addRegionRequest.Area),
+        //            $"{nameof(addRegionRequest.Area)} cannot be less than or equal to zero.");
+        //    }
+
+        //    if (addRegionRequest.Population < 0)
+        //    {
+        //        ModelState.AddModelError(nameof(addRegionRequest.Population),
+        //            $"{nameof(addRegionRequest.Population)} cannot be less than zero.");
+        //    }
+
+        //    if(ModelState.ErrorCount > 0)
+        //    {
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
+
+        #endregion
     }
 }
